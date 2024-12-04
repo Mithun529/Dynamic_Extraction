@@ -1,0 +1,46 @@
+/* Centering the content and adding a background */
+body {
+    /*background-image: url('background.jpg'); !* Path to your background image *!*/
+    /*background-size: cover;*/
+    /*background-repeat: no-repeat;*/
+    /*background-attachment: fixed;*/
+    /*background-position: center;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 10px;
+    font-family: Arial, sans-serif;
+}
+
+/* Centered form container with border and padding */
+#formContainer {
+    background-color: rgba(255, 255, 255, 0.8); /* Light background with transparency */
+    border: 2px solid #333; /* Border color */
+    padding: 20px;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* Styling the input fields and button */
+input[type="text"], button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+}
+
+button {
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+button:hover {
+    background-color: #555;
+}
