@@ -1,116 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Extraction Tool</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Web Scraping and Database Interaction</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center">
-    <div class="container mx-auto p-4">
-        <fieldset class="bg-white shadow-lg rounded-lg p-8">
-            <h1 class="text-2xl font-bold text-center mb-6 text-gray-800 animate-fade-in">
-                Data Extraction Tool
-            </h1>
-            <div class="mb-6">
-                <label for="option" class="block text-gray-700 font-semibold mb-2">
-                    Choose an option:
-                </label>
-                <select id="option" class="w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                    <option value="">--Select--</option>
-                    <option value="webscraping">Web Scraping</option>
-                    <option value="database">Database Interaction</option>
-                </select>
-            </div>
+<body>
+<fieldset>
+    <h1>Data Extraction Tool</h1>
+    <div>
 
-            <!-- Web Scraping Form -->
-            <div id="webscrapingForm" class="hidden animate-slide-down">
-                <h2 class="text-xl font-bold mb-4 text-gray-800">
-                    Web Scraping
-                </h2>
-                <form id="scrapeForm" method="post">
-                    <div class="mb-4">
-                        <label for="scrapeUrl" class="block text-gray-700 font-semibold mb-2">
-                            URL to Scrape:
-                        </label>
-                        <input type="text" id="scrapeUrl" class="w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="Enter the URL" required>
-                    </div>
-                    <div class="mb-4">
-                        <label for="searchTerm" class="block text-gray-700 font-semibold mb-2">
-                            Search Term (optional):
-                        </label>
-                        <input type="text" id="searchTerm" class="w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="Enter a search term (optional)">
-                    </div>
-                    <button type="submit" class="w-full bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300">
-                        Scrape Data
-                    </button>
-                </form>
-            </div>
-
-            <!-- Database Interaction Form -->
-            <div id="databaseForm" class="hidden animate-slide-down">
-                <h2 class="text-xl font-bold mb-4 text-gray-800">
-                    Database Interaction
-                </h2>
-                <form id="dbForm" method="post">
-                    <div class="mb-4">
-                        <label for="dbHost" class="block text-gray-700 font-semibold mb-2">
-                            MySQL Host:
-                        </label>
-                        <input type="text" id="dbHost" class="w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="Enter MySQL Host" required>
-                    </div>
-                    <div class="mb-4">
-                        <label for="dbUser" class="block text-gray-700 font-semibold mb-2">
-                            MySQL User:
-                        </label>
-                        <input type="text" id="dbUser" class="w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="Enter MySQL User" required>
-                    </div>
-                    <div class="mb-4">
-                        <label for="dbPassword" class="block text-gray-700 font-semibold mb-2">
-                            MySQL Password:
-                        </label>
-                        <input type="password" id="dbPassword" class="w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="Enter MySQL Password" required>
-                    </div>
-                    <div class="mb-4">
-                        <label for="dbName" class="block text-gray-700 font-semibold mb-2">
-                            MySQL Database Name:
-                        </label>
-                        <input type="text" id="dbName" class="w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="Enter MySQL Database Name" required>
-                    </div>
-                    <div class="mb-4">
-                        <label for="tableName" class="block text-gray-700 font-semibold mb-2">
-                            Table Name:
-                        </label>
-                        <input type="text" id="tableName" class="w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="Enter Table Name" required>
-                    </div>
-                    <button type="submit" class="w-full bg-green-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-green-600 transition duration-300">
-                        Fetch Data
-                    </button>
-                </form>
-            </div>
-
-            <br>
-            <br>
-            <!-- Output Section -->
-            <div id="output" class="mt-8 bg-gray-50 p-4 rounded-md shadow-sm border border-gray-300"></div>
-        </fieldset>
+        <label for="option">Choose an option:</label>
+        <select id="option">
+            <option value="">--Select--</option>
+            <option value="webscraping">Web Scraping</option>
+            <option value="database">Database Interaction</option>
+        </select>
     </div>
 
-    <script>
-        const optionSelect = document.getElementById('option');
-        const webscrapingForm = document.getElementById('webscrapingForm');
-        const databaseForm = document.getElementById('databaseForm');
+    <!-- Web Scraping Form -->
+    <div id="webscrapingForm" class="hidden">
+        <h2>Web Scraping</h2>
+        <form id="scrapeForm">
+            <div class="form-group">
+                <label for="scrapeUrl">URL to Scrape:</label>
+                <input type="text" id="scrapeUrl" placeholder="Enter the URL" required>
+            </div>
+            <div class="form-group">
+                <label for="searchTerm">Search Term (optional):</label>
+                <input type="text" id="searchTerm" placeholder="Enter a search term (optional)">
+            </div>
+            <button type="submit">Scrape Data</button>
+        </form>
+    </div>
 
-        optionSelect.addEventListener('change', () => {
-            webscrapingForm.classList.add('hidden');
-            databaseForm.classList.add('hidden');
+    <!-- Database Interaction Form -->
+    <div id="databaseForm" class="hidden">
+        <h2>Database Interaction</h2>
+        <form id="dbForm">
+            <div class="form-group">
+                <label for="dbHost">MySQL Host:</label>
+                <input type="text" id="dbHost" placeholder="Enter MySQL Host" required>
+            </div>
+            <div class="form-group">
+                <label for="dbUser">MySQL User:</label>
+                <input type="text" id="dbUser" placeholder="Enter MySQL User" required>
+            </div>
+            <div class="form-group">
+                <label for="dbPassword">MySQL Password:</label>
+                <input type="password" id="dbPassword" placeholder="Enter MySQL Password" required>
+            </div>
+            <div class="form-group">
+                <label for="dbName">MySQL Database Name:</label>
+                <input type="text" id="dbName" placeholder="Enter MySQL Database Name" required>
+            </div>
+            <div class="form-group">
+                <label for="tableName">Table Name:</label>
+                <input type="text" id="tableName" placeholder="Enter Table Name" required>
+            </div>
+            <button type="submit">Fetch Data</button>
+        </form>
+</fieldset>
+    </div>
+<br><br>
 
-            if (optionSelect.value === 'webscraping') {
-                webscrapingForm.classList.remove('hidden');
-            } else if (optionSelect.value === 'database') {
-                databaseForm.classList.remove('hidden');
-            }
-        });
-    </script>
+    <!-- Output Section -->
+    <div id="output"></div>
+
+    <script src="script.js"></script>
 </body>
 </html>
